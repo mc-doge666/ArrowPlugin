@@ -3,5 +3,5 @@ version: '${project.version}'
 main: com.example.arrowplugin.ArrowPlugin
 api-version: 1.20
 authors: [ mc_doge_ ]
-description: HardPigon
+description: HardPigeon
 website: mc-doge666.github.io

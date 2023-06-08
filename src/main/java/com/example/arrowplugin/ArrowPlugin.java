@@ -1,17 +1,46 @@
 package com.example.arrowplugin;
 
+import org.bukkit.Material;
+import org.bukkit.entity.Arrow;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityShootBowEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
 
-public final class ArrowPlugin extends JavaPlugin {
+public class ArrowPlugin extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
-        // Plugin startup logic
-
+        // 注册事件监听器
+        getServer().getPluginManager().registerEvents(this, this);
     }
 
-    @Override
-    public void onDisable() {
-        // Plugin shutdown logic
+    @EventHandler
+    public void onEntityShootBow(EntityShootBowEvent event) {
+        if (event.getEntity() instanceof Player) {
+            Player player = (Player) event.getEntity();
+            ItemStack bow = player.getInventory().getItemInMainHand();
+            if (bow.getType() == Material.BOW) {
+                // 取消事件，防止原始箭矢发射
+                event.setCancelled(true);
+                // 发射箭矢
+                new BukkitRunnable() {
+                    int count = 0;
+                    @Override
+                    public void run() {
+                        if (count < 5) {
+                            Arrow arrow = player.launchProjectile(Arrow.class);
+                            arrow.setVelocity(event.getProjectile().getVelocity());
+                            count++;
+                        } else {
+                            this.cancel();
+                        }
+                    }
+                }.runTaskTimer(this, 0L, 5L);
+            }
+        }
     }
 }

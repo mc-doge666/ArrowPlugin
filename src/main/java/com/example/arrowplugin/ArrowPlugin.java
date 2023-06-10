@@ -10,12 +10,17 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.logging.Logger;
+
 public class ArrowPlugin extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
         // 注册事件监听器
         getServer().getPluginManager().registerEvents(this, this);
+        String plugin = ("ArrowPlugin");
+        Logger logger = this.getLogger();
+        logger.info(plugin + "插件已加载");
     }
 
     @EventHandler
@@ -42,5 +47,11 @@ public class ArrowPlugin extends JavaPlugin implements Listener {
                 }.runTaskTimer(this, 0L, 5L);
             }
         }
+    }
+    @Override
+    public void onDisable() {
+        String plugin = ("ArrowPlugin");
+        Logger logger = this.getLogger();
+        logger.info(plugin + "插件已卸载");
     }
 }

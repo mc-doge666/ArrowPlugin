@@ -36,7 +36,7 @@ public class ArrowPlugin extends JavaPlugin implements Listener {
                     int count = 0;
                     @Override
                     public void run() {
-                        if (count < 5) {
+                        if (count < 10) {
                             Arrow arrow = player.launchProjectile(Arrow.class);
                             arrow.setVelocity(event.getProjectile().getVelocity());
                             count++;
@@ -44,7 +44,7 @@ public class ArrowPlugin extends JavaPlugin implements Listener {
                             this.cancel();
                         }
                     }
-                }.runTaskTimer(this, 0L, 5L);
+                }.runTaskTimer(this, 0L, 2L);
             }
         }
     }

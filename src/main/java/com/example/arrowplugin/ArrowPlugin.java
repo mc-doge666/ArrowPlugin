@@ -44,7 +44,7 @@ public class ArrowPlugin extends JavaPlugin implements Listener {
                             this.cancel();
                         }
                     }
-                }.runTaskTimer(this, 0L, 4L);
+                }.runTaskTimer(this, 0L, 5L);
             }
         }
     }

@@ -50,7 +50,7 @@ public class ArrowPlugin extends JavaPlugin implements Listener {
     }
     @Override
     public void onDisable() {
-        String plugin = ("ArrowPlugin");
+        String plugin = ("*ArrowPlugin");
         Logger logger = this.getLogger();
         logger.info(plugin + "插件已卸载");
     }

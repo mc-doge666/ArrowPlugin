@@ -18,7 +18,7 @@ public class ArrowPlugin extends JavaPlugin implements Listener {
     public void onEnable() {
         // 注册事件监听器
         getServer().getPluginManager().registerEvents(this, this);
-        String plugin = ("ArrowPlugin");
+        String plugin = ("[ArrowPlugin]");
         Logger logger = this.getLogger();
         logger.info(plugin + "插件已加载");
     }
@@ -50,7 +50,7 @@ public class ArrowPlugin extends JavaPlugin implements Listener {
     }
     @Override
     public void onDisable() {
-        String plugin = ("ArrowPlugin");
+        String plugin = ("[ArrowPlugin]");
         Logger logger = this.getLogger();
         logger.info(plugin + "插件已卸载");
     }
